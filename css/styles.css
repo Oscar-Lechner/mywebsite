@@ -1,0 +1,14 @@
+#aquarium {
+    width: 100vw;
+    height: 100vh;
+    background: url('../img/oceanfloor.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.fish {
+    position: absolute;
+    width: 100px; /* Adjust based on your fish image size */
+    transition: top 0.5s; /* Smooth vertical movement */
+    transform: scaleX(-1); /* Make fish face right */
+}
