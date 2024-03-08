@@ -44,7 +44,7 @@
 
         <section id="contact">
             <h2>Contact</h2>
-            <form action="contact.php" method="post">
+            <form id="contact-form">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email:</label>
@@ -63,5 +63,21 @@
     <div id="aquarium"></div>
 
     <script src="portfolioFish.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Display form values (replace with your desired logic)
+            alert(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+
+            // Reset form fields
+            document.getElementById('contact-form').reset();
+        });
+    </script>
 </body>
 </html>
