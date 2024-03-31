@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cockfight GAC</title>
+    <link rel="stylesheet" type="text/css" href="../css/gacstyles.css">
+</head>
+<body>
+    <div class="countdown-container">
+        <span class="countdown-label">Time until GAC:</span>
+        <div id="countdown" class="countdown"></div>
+    </div>
+    <div class="countdown-container">
+        <span class="countdown-label">Time until teams randomized:</span>
+        <div id="randomizationCountdown" class="countdown"></div>
+    </div>
+    <h1>Pool of Participants</h1>
+    <div id="participants" class="grid-container"></div>
+
+    <script>
+        const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTC12XZzIcD40nngTbeRWlrMk4cszO5wFZtQHbrhA05lD4S7BPKaqz-t0R7jhcZFwF9QMBiGqGawh1E/pub?output=csv";
+
+        async function fetchParticipants() {
+            const response = await fetch(sheetUrl);
+            const text = await response.text();
+            const names = text.split("\n").filter(name => name.trim() !== "");
+            const container = document.getElementById("participants");
+            container.innerHTML = ""; // Clear existing content
+            names.forEach(name => {
+                const div = document.createElement("div");
+                div.className = "grid-item";
+                div.innerText = name;
+                container.appendChild(div);
+            });
+        }
+
+        fetchParticipants();
+
+        // Countdown Timer Function for GAC
+        function updateCountdown() {
+            const now = new Date();
+            const currentDay = now.getDay(); // Day of the week (0 for Sunday, 6 for Saturday)
+            const daysUntilSaturday = (6 - currentDay + 7) % 7; // Days remaining until the next Saturday
+
+            // Target time: 2 PM on the upcoming Saturday
+            const targetDate = new Date(now);
+            targetDate.setDate(now.getDate() + daysUntilSaturday);
+            targetDate.setHours(14, 0, 0, 0); // Set time to 2 PM
+
+            // Calculate remaining time
+            const remainingTime = targetDate - now;
+            const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+            // Update countdown display
+            document.getElementById("countdown").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        // Countdown Timer Function for Team Randomization
+function updateRandomizationCountdown() {
+    const now = new Date();
+    const currentDay = now.getDay(); // Day of the week (0 for Sunday, 6 for Saturday)
+    const daysUntilFriday = (5 - currentDay + 7) % 7; // Days remaining until the next Friday
+
+    // Target time: 12 PM (noon) on the upcoming Friday
+    const targetDate = new Date(now);
+    targetDate.setDate(now.getDate() + daysUntilFriday);
+    targetDate.setHours(12, 0, 0, 0); // Set time to 12 PM (noon)
+
+    // Calculate remaining time
+    const remainingTime = targetDate - now;
+    const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+    // Update countdown display
+    document.getElementById("randomizationCountdown").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+
+        // Update the countdowns every second
+        setInterval(updateCountdown, 1000);
+        setInterval(updateRandomizationCountdown, 1000);
+    </script>
+</body>
+</html>
