@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+/* Main container for the layout */
+.container {
+    display: flex;
+}
+
+/* Red Vertical Side Bar */
+.red-bar {
+    width: 20vh;
+    height: 100vh;
+    background-color: #8B1C1C; /* Red Color */
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Top Navigation Bar */
+.top-bar {
+    top: 100px;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, #666666, #333333); /* Gray Gradient */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+    margin-left: 150px; /* To align with the red bar */
+}
+
+/* Bird Logo */
+.bird-logo {
+    position: absolute;
+    top: 100px;
+    left: -100;
+    z-index: 1001;
+}
+
+.bird-logo img {
+    width: 350px;
+    height: auto;
+}
+
+/* Import custom font */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('RadicalBrushDemoRegular-V6wx.otf') format('opentype'); /* Replace with the actual path to your .otf file */
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 30px;
+    position: absolute;
+    left: 170px;
+    top: 40px;
+}
+
+.nav-links a {
+    font-family: 'CustomFont', sans-serif; /* Apply your custom font */
+    color: #FF4500; /* Red-orange for text */
+    text-decoration: none;
+    font-size: 24px; /* Increased size by 20% */
+    letter-spacing: 5px;
+    transition: color 0.5s ease, transform 0.3s ease; /* Smooth transitions for color and size */
+}
+
+.nav-links a:hover {
+    color: #fff; /* White on hover */
+    transform: scale(1.1); /* Grow text size on hover */
+    transition: color 0.5s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Website Title */
+/* Website Title */
+.title a {
+    text-decoration: none; /* Remove underline */
+}
+.title {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    
+    
+}
+
+.title h1 {
+    font-family: 'CustomFont', sans-serif; /* Apply your custom font */
+    font-size: 50px;
+    letter-spacing: 3px;
+    background: linear-gradient(to bottom, #2b2b2b, #4d4d4d); /* Reverse gradient compared to the background */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
+}
