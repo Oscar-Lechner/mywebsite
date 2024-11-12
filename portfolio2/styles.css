@@ -1,0 +1,174 @@
+/* Load the Archia font using @font-face */
+@font-face {
+    font-family: 'Archia';
+    src: 
+         url('fonts/Archia-Regular.woff') format('woff');
+        
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Archia-Bold';
+    src: 
+         url('fonts/Archia-Bold.woff') format('woff');
+        
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Archia-Thin';
+    src: 
+         url('fonts/Archia-Thin.woff') format('woff');
+        
+    font-weight: thin;
+    font-style: normal;
+  }
+
+
+ 
+/* Reset some default styles */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Archia', sans-serif;
+    color: #fff;
+    background: #000000;
+  }
+  
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  /* Content Wrapper */
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Semi-transparent Background for Sections */
+  .content-section {
+    background: rgba(0, 0, 0, 0.9); /* Black with 70% opacity */
+    margin: 50px auto;
+    padding: 40px;
+    max-width: 800px;
+    border-radius: 10px;
+  }
+  
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 0;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+  }
+  
+  nav {
+    margin-top: 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: #32c8f0;
+  }
+  
+  /* Main Content */
+  main {
+    padding-top: 100px; /* To prevent content from hiding behind the fixed header */
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  /* Project Grid */
+  .project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .project-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, background 0.3s;
+    cursor: pointer;
+  }
+  
+  .project-card:hover {
+    background: rgba(50, 200, 240, 0.99);
+    transform: scale(1.05);
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 1);
+  }
+  .back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #155466; /* Button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure it’s above other elements */
+  }
+  
+  .back-to-top:hover {
+    background-color: #052733; /* Slightly darker on hover */
+  }
+  
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+  
+    nav a {
+      margin: 0 10px;
+      font-size: 1rem;
+    }
+  
+    .content-section {
+      margin: 30px 20px;
+      padding: 20px;
+    }
+  
+    .project-card {
+      width: 100%;
+    }
+  }
+  
